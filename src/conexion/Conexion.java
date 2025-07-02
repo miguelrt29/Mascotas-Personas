@@ -1,19 +1,17 @@
 package conexion;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class Conexion {
-    private static final String URL = "jdbc:mysql://localhost:3306/ClinicaABC";
-    private static final String USER = "root";  // Cambia si tienes otro usuario
-    private static final String PASSWORD = "";  // Cambia si tienes contraseña
+    private static final String URL = "jdbc:mysql://localhost:3306/clinicaabc";
+    private static final String USER = "root";
+    private static final String PASS = ""; // pon tu contraseña si tienes
 
     public static Connection getConexion() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            return DriverManager.getConnection(URL, USER, PASSWORD);
-        } catch (ClassNotFoundException | SQLException e) {
+            return DriverManager.getConnection(URL, USER, PASS);
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
