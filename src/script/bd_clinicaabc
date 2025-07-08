@@ -1,0 +1,23 @@
+CREATE DATABASE IF NOT EXISTS clinicaabc;
+USE clinicaabc;
+
+-- Eliminar tablas si ya existen 
+DROP TABLE IF EXISTS Mascota;
+DROP TABLE IF EXISTS Persona;
+
+
+CREATE TABLE Persona (
+    documento VARCHAR(20) PRIMARY KEY,
+    nombre VARCHAR(100),
+    telefono VARCHAR(20)
+);
+
+
+CREATE TABLE Mascota (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100),
+    raza VARCHAR(50),
+    sexo VARCHAR(10),
+    documento_dueno VARCHAR(20),
+    FOREIGN KEY (documento_dueno) REFERENCES Persona(documento)
+);
